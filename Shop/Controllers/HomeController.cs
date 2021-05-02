@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DBs.Production;
+using System.Data.Entity;
+using System.Data;
+
 
 namespace Shop.Controllers
 {
@@ -12,9 +15,13 @@ namespace Shop.Controllers
         Prod prod = new Prod();
         public ActionResult Index()
         {
-            IEnumerable<Product> prods = prod.Product;
+            var prodph = prod.Product.Include(pph => pph.ProductProductPhoto);
+            var prph = prod.ProductProductPhoto.Include(ph => ph.ProductPhoto);
+            /*IEnumerable<Product> prods = prod.Product;
+            IEnumerable<ProductPhoto> prodphotos = prod.ProductPhoto;
             ViewBag.Productions = prods;
-            return View();
+            ViewBag.ProductPhotos = prodphotos;*/
+            return View(prph.ToList());
         }
 
         public ActionResult About()
