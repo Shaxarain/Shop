@@ -12,12 +12,19 @@ namespace Shop.Controllers
 {
     public class HomeController : Controller
     {
-        Prod prod = new Prod();
+        UOW uow;
+        /*BasicRepository<Product> prodRepo = new BasicRepository<Product>(new Prod());
+        BasicRepository<ProductProductPhoto> prodprodphotoRepo = new BasicRepository<ProductProductPhoto>(new Prod());*/
+        public HomeController()
+        {
+            uow = new UOW();
+        }
         public ActionResult Index()
         {
-            IEnumerable<Product> prods = prod.Product.Include("ProductProductPhoto").Include("ProductProductPhoto.ProductPhoto");
-            ViewBag.Productions = prods;
-
+            var catalog1 = uow.Product.GetAll();
+            ViewBag.Productions = catalog1;
+            /*IEnumerable<Product> prods = prodRepo.GetWithInclude(pp => pp.ProductProductPhoto.ProductPhoto));
+            ViewBag.Productions = prods;*/
             return View();
         }
 
