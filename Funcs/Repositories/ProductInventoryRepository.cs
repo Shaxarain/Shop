@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DBs.Production;
+using System.Data.Entity;
+
+namespace Funcs.Repositories
+{
+    public class ProductInventoryRepository : IRepository<ProductInventory>
+    {
+        private Prod db;
+
+        public ProductInventoryRepository(Prod context)
+        {
+            this.db = context;
+        }
+
+        public IEnumerable<ProductInventory> GetAll()
+        {
+            return db.ProductInventory.Include(o => o.Product);
+        }
+
+        public ProductInventory Get(int id)
+        {
+            return db.ProductInventory.Find(id);
+        }
+
+        public void Create(ProductInventory pi)
+        {
+            db.ProductInventory.Add(pi);
+        }
+
+        public void Update(ProductInventory pi)
+        {
+            db.Entry(pi).State = EntityState.Modified;
+        }
+
+        public void Delete(int id)
+        {
+            ProductInventory pi = db.ProductInventory.Find(id);
+            if (pi != null)
+                db.ProductInventory.Remove(pi);
+        }
+    }
+}

@@ -12,17 +12,17 @@ namespace Shop.Controllers
 {
     public class HomeController : Controller
     {
-        UOW uow;
+        UOWCatalog uow;
         /*BasicRepository<Product> prodRepo = new BasicRepository<Product>(new Prod());
         BasicRepository<ProductProductPhoto> prodprodphotoRepo = new BasicRepository<ProductProductPhoto>(new Prod());*/
         public HomeController()
         {
-            uow = new UOW();
+            uow = new UOWCatalog();
         }
         public ActionResult Index()
         {
-            var catalog1 = uow.Product.GetAll();
-            ViewBag.Productions = catalog1;
+            var catalog = uow.Product.GetAll().Where(p => p.ProductInventory.Sum(q => q.Quantity) > 0);
+            ViewBag.Catalog = catalog;
             /*IEnumerable<Product> prods = prodRepo.GetWithInclude(pp => pp.ProductProductPhoto.ProductPhoto));
             ViewBag.Productions = prods;*/
             return View();

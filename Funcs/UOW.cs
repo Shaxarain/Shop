@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DBs.Production;
+using Funcs.Repositories;
 
 namespace Funcs
 {
-    public class UOW : IDisposable
+    public class UOWCatalog : IDisposable
     {
         private Prod db = new Prod();
         private ProductRepository productRepository;
         private PrPrPhotoRepository prprphotoRepository;
         private ProductPhotoRepository productphotoRepository;
+        private ProductInventoryRepository productinventoryRepository;
         public ProductRepository Product
         {
             get
@@ -38,6 +40,15 @@ namespace Funcs
                 if (productphotoRepository == null)
                     productphotoRepository = new ProductPhotoRepository(db);
                 return productphotoRepository;
+            }
+        }
+        public ProductInventoryRepository ProductInventory
+        {
+            get
+            {
+                if (productinventoryRepository == null)
+                    productinventoryRepository = new ProductInventoryRepository(db);
+                return productinventoryRepository;
             }
         }
         public void Save()
