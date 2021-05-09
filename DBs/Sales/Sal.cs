@@ -2,13 +2,14 @@ using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
+using DBs.Production;
 
 namespace DBs.Sales
 {
     public partial class Sal : DbContext
     {
         public Sal()
-            : base("name=Sal")
+            : base("name=Sal1")
         {
         }
 
@@ -194,6 +195,9 @@ namespace DBs.Sales
                 .HasMany(e => e.SalesTerritoryHistory)
                 .WithRequired(e => e.SalesTerritory)
                 .WillCascadeOnDelete(false);
+
+/*            modelBuilder.Entity<ShoppingCartItem>()
+                .HasMany(e => e.ProductID);*/
 
             modelBuilder.Entity<SpecialOffer>()
                 .Property(e => e.DiscountPct)

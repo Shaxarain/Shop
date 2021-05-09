@@ -11,6 +11,6 @@ using System.Data;
 namespace Funcs
 {
     public class Kiznaiver
-    {
+    {   
     }
 }

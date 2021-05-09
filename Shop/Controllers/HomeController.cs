@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DBs.Production;
+using DBs.Sales;
 using Funcs;
 using System.Data.Entity;
 using System.Data;
@@ -12,6 +13,7 @@ namespace Shop.Controllers
 {
     public class HomeController : Controller
     {
+        Sal sal = new Sal();
         UOWCatalog uow;
         /*BasicRepository<Product> prodRepo = new BasicRepository<Product>(new Prod());
         BasicRepository<ProductProductPhoto> prodprodphotoRepo = new BasicRepository<ProductProductPhoto>(new Prod());*/
@@ -27,7 +29,13 @@ namespace Shop.Controllers
             ViewBag.Productions = prods;*/
             return View();
         }
+        public ActionResult Adding(ShoppingCartItem item)
+        {
+            sal.ShoppingCartItem.Add(item);
+            sal.SaveChanges();
 
+            return RedirectToAction("Index");
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -39,6 +47,10 @@ namespace Shop.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        public ActionResult Cart()
+        {
             return View();
         }
     }
