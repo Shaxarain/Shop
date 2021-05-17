@@ -8,7 +8,7 @@ using DBs.Sales;
 
 namespace Funcs.Repositories
 {
-    class ShoppingCartItemRepository : IRepository <ShoppingCartItem>
+    public class ShoppingCartItemRepository : IRepository <ShoppingCartItem>
     {
         private Sal db;
         public ShoppingCartItemRepository(Sal context)
@@ -26,21 +26,21 @@ namespace Funcs.Repositories
             return db.ShoppingCartItem.Find(id);
         }
 
-        public void Create(ShoppingCartItem product)
+        public void Create(ShoppingCartItem sci)
         {
-            db.ShoppingCartItem.Add(product);
+            db.ShoppingCartItem.Add(sci);
         }
 
-        public void Update(ShoppingCartItem product)
+        public void Update(ShoppingCartItem sci)
         {
-            db.Entry(product).State = EntityState.Modified;
+            db.Entry(sci).State = EntityState.Modified;
         }
 
         public void Delete(int id)
         {
-            ShoppingCartItem product = db.ShoppingCartItem.Find(id);
-            if (product != null)
-                db.ShoppingCartItem.Remove(product);
+            ShoppingCartItem sci = db.ShoppingCartItem.Find(id);
+            if (sci != null)
+                db.ShoppingCartItem.Remove(sci);
         }
     }
 }

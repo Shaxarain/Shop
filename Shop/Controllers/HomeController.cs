@@ -23,18 +23,11 @@ namespace Shop.Controllers
         }
         public ActionResult Index()
         {
-            var catalog = uow.Product.GetAll().Where(p => p.ProductInventory.Sum(q => q.Quantity) > 0);
+            var catalog = uow.Product.GetAll().Where(p => p.ProductInventory.Sum(q => q.Quantity) > 0 && p.StandardCost != 0);
             ViewBag.Catalog = catalog;
             /*IEnumerable<Product> prods = prodRepo.GetWithInclude(pp => pp.ProductProductPhoto.ProductPhoto));
             ViewBag.Productions = prods;*/
             return View();
-        }
-        public ActionResult Adding(ShoppingCartItem item)
-        {
-            sal.ShoppingCartItem.Add(item);
-            sal.SaveChanges();
-
-            return RedirectToAction("Index");
         }
         public ActionResult About()
         {
@@ -49,9 +42,9 @@ namespace Shop.Controllers
 
             return View();
         }
-        public ActionResult Cart()
+        public RedirectToRouteResult Cart()
         {
-            return View();
+            return RedirectToRoute(new { controller = "Cart", action = "Index" });
         }
     }
 }

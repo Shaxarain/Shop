@@ -1,0 +1,39 @@
+﻿@model Shop.Models.CartIndexViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cart</h2>
+<p>Тут Ваша будущая покупка</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Кол-во</th>
+            <th>Продукт</th>
+            <th class="text-right">Цена</th>
+            <th class="text-right">Общая цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Cart.Lines)
+        {
+            <tr>
+                <td class="text-center">@p.Quantity</td>
+                <td class="text-left">@p.Product.Name</td>
+                <td class="text-right">@p.Product.StandardCost</td>
+                <td class="text-right">
+                    @((p.Quantity * p.Product.StandardCost))
+                </td>
+            </tr>
+        }
+    </tbody>
+@*    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Итого:</td>
+            <td class="text-right">
+                @ViewBag.Cart.ComputeTotalValue()
+            </td>
+        </tr>
+    </tfoot>*@
+</table>
