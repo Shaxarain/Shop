@@ -18,14 +18,14 @@
     <tbody>
         @foreach (var p in Model.Cart.Lines)
         {
-            <tr>
-                <td class="text-center">@p.Quantity</td>
-                <td class="text-left">@p.Product.Name</td>
-                <td class="text-right">@p.Product.StandardCost</td>
-                <td class="text-right">
-                    @((p.Quantity * p.Product.StandardCost))
-                </td>
-            </tr>
+        <tr>
+            <td class="text-center">@p.Quantity</td>
+            <td class="text-left">@p.Product.Name </td>
+            <td class="text-right">@p.Product.StandardCost</td>
+            <td class="text-right">
+                @((p.Quantity * p.Product.StandardCost))
+            </td>
+        </tr>
         }
     </tbody>
 @*    <tfoot>

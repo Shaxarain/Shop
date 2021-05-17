@@ -38,9 +38,8 @@
                     <td>
                         @using (Html.BeginForm("AddToCart", "Cart"))
                         {
-                            @Html.HiddenFor(x => x.ProductID)
-                            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                            <input type="submit" value="Добавить в корзину" />
+                            <input id = "ProductID" name = "ProductID" type = "hidden" value = @p.ProductID />
+                                    <input type="submit" value="Добавить в корзину" />
                         }
                     </td>
                 </tr>

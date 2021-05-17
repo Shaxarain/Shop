@@ -26,11 +26,15 @@ namespace Shop.Controllers
             });
         }
 
-        public RedirectToRouteResult AddToCart(Product product, string returnUrl)
+        public RedirectToRouteResult AddToCart(int ProductID)
         {
+            Product product = uow.Product.Get(ProductID);
+            if (product != null)
+            {
                 GetCart().Adding(product, 1);
+            }
 
-            return RedirectToAction("Index", new { returnUrl });
+            return RedirectToAction("Index");
         }
 
         public RedirectToRouteResult RemoveFromCart(Product product, string returnUrl)
