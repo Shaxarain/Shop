@@ -19,9 +19,9 @@ namespace Funcs
                 .Where(pi => pi.Product.ProductID == product.ProductID)
                 .FirstOrDefault();
 
-            if (cartline.Product == null)
+            if (cartline == null)
             {
-                Carting.Add(new CartLine(product, quantity));
+                Carting.Add(new CartLine() { Product = product, Quantity = quantity }) ;
             }
             else
             {
@@ -32,6 +32,10 @@ namespace Funcs
         {
             Carting.RemoveAll(l => l.Product.ProductID == product.ProductID);
         }
+     /*   public decimal ComputeTotalValue()
+        {
+            return Carting.Sum(e => e.Product.StandardCost * e.Quantity);
+        }*/
         public IEnumerable<CartLine> Lines
         {
             get { return Carting; }
@@ -41,11 +45,11 @@ namespace Funcs
     {
         public Product Product { get; set; }
         public int Quantity { get; set; }
-        public CartLine(Product p, int q) 
+/*        public CartLine(Product p, int q) 
         {
             Product = p;
             Quantity = q;
         }
-        public CartLine() { }
+        public CartLine() { }*/
     }
 }
