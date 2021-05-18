@@ -32,10 +32,10 @@ namespace Funcs
         {
             Carting.RemoveAll(l => l.Product.ProductID == product.ProductID);
         }
-     /*   public decimal ComputeTotalValue()
+        public decimal ComputeTotalValue()
         {
             return Carting.Sum(e => e.Product.StandardCost * e.Quantity);
-        }*/
+        }
         public IEnumerable<CartLine> Lines
         {
             get { return Carting; }

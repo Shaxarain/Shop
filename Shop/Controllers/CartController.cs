@@ -31,9 +31,16 @@ namespace Shop.Controllers
             Product product = uow.Product.Get(ProductID);
             if (product != null)
             {
-                GetCart().Adding(product, 1);
+                try
+                {
+                    GetCart().Adding(product, 1);
+                }
+                catch
+                {
+                    return RedirectToAction("Index");
+                }
+                
             }
-
             return RedirectToAction("Index");
         }
 
