@@ -1,4 +1,4 @@
-﻿@model DBs.Production.Product
+﻿@model Shop.Models.ProductsViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -20,7 +20,7 @@
                 <th>Цена</th>
                 <th>Кнопочка</th>
             </tr>
-            @foreach (var p in ViewBag.Catalog)
+            @foreach (var p in Model.Products)
             {
                 <tr>
                     <td>
@@ -38,13 +38,16 @@
                     <td>
                         @using (Html.BeginForm("AddToCart", "Cart"))
                         {
-                            <input id = "ProductID" name = "ProductID" type = "hidden" value = @p.ProductID />
-                                    <input type="submit" value="Добавить в корзину" />
+                            <input id="ProductID" name="ProductID" type="hidden" value=@p.ProductID />
+                            <input type="submit" value="Добавить в корзину" />
                         }
                     </td>
                 </tr>
             }
         </table>
+    </div>
+    <div class="pager">
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
     </div>
 </body>
 </html>
