@@ -14,19 +14,9 @@ namespace Shop.Controllers
     public class HomeController : Controller
     {
         Sal sal = new Sal();
-        UOWCatalog uow;
-        /*BasicRepository<Product> prodRepo = new BasicRepository<Product>(new Prod());
-        BasicRepository<ProductProductPhoto> prodprodphotoRepo = new BasicRepository<ProductProductPhoto>(new Prod());*/
-        public HomeController()
-        {
-            uow = new UOWCatalog();
-        }
+ 
         public ActionResult Index()
         {
-            var catalog = uow.Product.GetAll().Where(p => p.ProductInventory.Sum(q => q.Quantity) > 0 && p.StandardCost != 0);
-            ViewBag.Catalog = catalog;
-            /*IEnumerable<Product> prods = prodRepo.GetWithInclude(pp => pp.ProductProductPhoto.ProductPhoto));
-            ViewBag.Productions = prods;*/
             return View();
         }
         public ActionResult About()
