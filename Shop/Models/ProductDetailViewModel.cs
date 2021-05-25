@@ -1,4 +1,4 @@
-﻿using Funcs;
+﻿using DBs.Production;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +6,8 @@ using System.Web;
 
 namespace Shop.Models
 {
-    public class CartIndexViewModel
+    public class ProductDetailViewModel
     {
-        public Cart Cart { get; set; }
+        public Product Product { get; set; }
     }
 }

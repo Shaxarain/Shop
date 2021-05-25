@@ -19,6 +19,7 @@
                 <th>Картинка</th>
                 <th>Цена</th>
                 <th>Кнопочка</th>
+                <th>Ещё кнопочка</th>
             </tr>
             @foreach (var p in Model.Products)
             {
@@ -40,6 +41,13 @@
                         {
                             <input id="ProductID" name="ProductID" type="hidden" value=@p.ProductID />
                             <input type="submit" value="Добавить в корзину" />
+                        }
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("ProductPage", "ProductDetail"))
+                        {
+                            <input id="ProductID" name="ProductID" type="hidden" value=@p.ProductID />
+                            <input type="submit" value="Подробнее" />
                         }
                     </td>
                 </tr>

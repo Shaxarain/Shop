@@ -17,12 +17,11 @@ namespace Shop.Controllers
         {
             uow = new UOWCatalog();
         }
-        public ViewResult Index (string returnUrl)
+        public ViewResult Index ()
         {
             return View(new CartIndexViewModel
             {
-                Cart = GetCart(),
-                ReturnUrl = returnUrl
+                Cart = GetCart()
             });
         }
 
@@ -44,7 +43,7 @@ namespace Shop.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectToRouteResult RemoveFromCart(Product product, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(Product product)
         {
             Product Productincart = uow.Product.Get(product.ProductID);
 
@@ -52,7 +51,7 @@ namespace Shop.Controllers
             {
                 GetCart().Deleting(product);
             }
-            return RedirectToAction("Index", new { returnUrl });
+            return RedirectToAction("Index");
         }
 
         public Cart GetCart()

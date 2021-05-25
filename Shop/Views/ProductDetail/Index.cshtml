@@ -1,0 +1,10 @@
+﻿@model Shop.Models.ProductDetailViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Model.Product.Name
+@Html.Raw("<img style='width:100px; height:60px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Product.ProductProductPhoto.FirstOrDefault().ProductPhoto.LargePhoto) + "\" />")
+
