@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DBs.Production;
+using DBs.DB;
 using System.Data.Entity;
 
 namespace Funcs
 {
     public class PrPrPhotoRepository : IRepository<ProductProductPhoto>
     {
-        private Prod db;
+        private DataBase db;
 
-        public PrPrPhotoRepository(Prod context)
+        public PrPrPhotoRepository(DataBase context)
         {
             this.db = context;
         }

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DBs.Production;
+using DBs.DB;
 using System.Data.Entity;
 
 namespace Funcs.Repositories
 {
     public class ProductInventoryRepository : IRepository<ProductInventory>
     {
-        private Prod db;
+        private DataBase db;
 
-        public ProductInventoryRepository(Prod context)
+        public ProductInventoryRepository(DataBase context)
         {
             this.db = context;
         }

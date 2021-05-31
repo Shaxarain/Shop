@@ -4,14 +4,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DBs.Sales;
+using DBs.DB;
 
 namespace Funcs.Repositories
 {
     public class ShoppingCartItemRepository : IRepository <ShoppingCartItem>
     {
-        private Sal db;
-        public ShoppingCartItemRepository(Sal context)
+        private DataBase db;
+        public ShoppingCartItemRepository(DataBase context)
         {
             this.db = context;
         }

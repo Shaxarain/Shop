@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBs", "DBs\DBs.csproj", "{8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funcs", "Funcs\Funcs.csproj", "{820CF9D9-3028-4A10-98A0-7730CCD3F9E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService\WcfService.csproj", "{BD66BB15-D195-4E80-B544-942006DF0862}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFContracts", "WCFContracts\WCFContracts.csproj", "{8082DFE4-048A-4907-B4B5-6049A56166F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{820CF9D9-3028-4A10-98A0-7730CCD3F9E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{820CF9D9-3028-4A10-98A0-7730CCD3F9E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{820CF9D9-3028-4A10-98A0-7730CCD3F9E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD66BB15-D195-4E80-B544-942006DF0862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD66BB15-D195-4E80-B544-942006DF0862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD66BB15-D195-4E80-B544-942006DF0862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD66BB15-D195-4E80-B544-942006DF0862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8082DFE4-048A-4907-B4B5-6049A56166F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8082DFE4-048A-4907-B4B5-6049A56166F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8082DFE4-048A-4907-B4B5-6049A56166F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8082DFE4-048A-4907-B4B5-6049A56166F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

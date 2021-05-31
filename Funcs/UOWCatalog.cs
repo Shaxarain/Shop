@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DBs.Production;
-using DBs.Sales;
+using DBs.DB;
 using Funcs.Repositories;
 
 namespace Funcs
 {
     public class UOWCatalog : IDisposable
     {
-        private Prod db = new Prod();
-        private Sal db2 = new Sal();
+        private DataBase db = new DataBase();
         private ProductRepository productRepository;
         private PrPrPhotoRepository prprphotoRepository;
         private ProductPhotoRepository productphotoRepository;
@@ -59,7 +57,7 @@ namespace Funcs
             get
             {
                 if (shoppingcartitemRepository == null)
-                    shoppingcartitemRepository = new ShoppingCartItemRepository(db2);
+                    shoppingcartitemRepository = new ShoppingCartItemRepository(db);
                 return shoppingcartitemRepository;
             }
         }

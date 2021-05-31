@@ -1,4 +1,4 @@
-﻿using DBs.Production;
+﻿using DBs.DB;
 using Funcs;
 using Shop.Models;
 using System;
@@ -18,12 +18,13 @@ namespace Shop.Controllers
         }
         public ActionResult Index(Product product)
         {
-            /*var PrPhoto = from p in uow.Product.GetAll()
+            var PrPhoto = from p in uow.Product.GetAll()
                           join ppp in uow.PrPrPhoto.GetAll() on p.ProductID equals ppp.ProductID
                           join pp in uow.ProductPhoto.GetAll() on ppp.ProductPhotoID equals pp.ProductPhotoID
-                          select pp.LargePhoto.First();
+                          where p.ProductID == product.ProductID
+                          select pp.LargePhoto;
 
-            ViewBag.pp = (byte[])PrPhoto;*/
+            ViewBag.pp = PrPhoto.First();
             return View(new ProductDetailViewModel
             { 
                 Product = product
