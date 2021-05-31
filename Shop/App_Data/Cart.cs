@@ -7,13 +7,14 @@ using DBs.DB;
 using Funcs;
 using System.Data.Entity;
 using System.Data;
+using WCFContracts.DataContracts;
 
-namespace Funcs
+namespace Shop
 {
     public class Cart
     {
         private List<CartLine> Carting = new List<CartLine>();
-        public void Adding(Product product, int quantity)
+        public void Adding(ProductData product, int quantity)
         {
             CartLine cartline = Carting
                 .Where(pi => pi.Product.ProductID == product.ProductID)
@@ -28,7 +29,7 @@ namespace Funcs
                 cartline.Quantity += 1;
             }
         }
-        public void Deleting(Product product)
+        public void Deleting(ProductData product)
         {
             Carting.RemoveAll(l => l.Product.ProductID == product.ProductID);
         }
@@ -43,7 +44,7 @@ namespace Funcs
     }
     public class CartLine
     {
-        public Product Product { get; set; }
+        public ProductData Product { get; set; }
         public int Quantity { get; set; }
     }
 }

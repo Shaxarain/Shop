@@ -7,6 +7,4 @@
 
 @Model.Product.Name
 
-@Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(ViewBag.pp) + "\" />")
-
-@Model.Product.
+@Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Product.LargePhoto) + "\" />")

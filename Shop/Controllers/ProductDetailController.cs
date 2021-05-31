@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WCFContracts.DataContracts;
 
 namespace Shop.Controllers
 {
@@ -16,24 +17,15 @@ namespace Shop.Controllers
         {
             uow = new UOWCatalog();
         }
-        public ActionResult Index(Product product)
+        public ActionResult Index(int ProductID)
         {
-            var PrPhoto = from p in uow.Product.GetAll()
-                          join ppp in uow.PrPrPhoto.GetAll() on p.ProductID equals ppp.ProductID
-                          join pp in uow.ProductPhoto.GetAll() on ppp.ProductPhotoID equals pp.ProductPhotoID
-                          where p.ProductID == product.ProductID
-                          select pp.LargePhoto;
-
-            ViewBag.pp = PrPhoto.First();
+            ProductServiceRef.MainContractOf_ProductDataClient client = new ProductServiceRef.MainContractOf_ProductDataClient();
+            ProductData product = client.Get(ProductID);
+            client.Close();
             return View(new ProductDetailViewModel
             { 
                 Product = product
             });
-        }
-        public RedirectToRouteResult ProductPage(int ProductID)
-        {
-            Product product = uow.Product.Get(ProductID);
-            return RedirectToAction("Index", product);
         }
     }
 }

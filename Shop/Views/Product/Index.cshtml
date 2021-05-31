@@ -41,7 +41,7 @@
                         }
                     </td>
                     <td>
-                        @using (Html.BeginForm("ProductPage", "ProductDetail"))
+                        @using (Html.BeginForm("Index", "ProductDetail"))
                         {
                             <input id="ProductID" name="ProductID" type="hidden" value=@p.ProductID />
                             <input type="submit" value="Подробнее" />

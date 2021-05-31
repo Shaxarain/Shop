@@ -6,16 +6,13 @@ using System.Web.Mvc;
 using DBs.DB;
 using Funcs;
 using Shop.Models;
+using WCFContracts.DataContracts;
 
 namespace Shop.Controllers
 {
     public class CartController : Controller
     {
-        private UOWCatalog uow;
-        public CartController()
-        {
-            uow = new UOWCatalog();
-        }
+        public CartController(){ }
         public ViewResult Index ()
         {
             return View(new CartIndexViewModel
@@ -26,7 +23,8 @@ namespace Shop.Controllers
 
         public RedirectToRouteResult AddToCart(int ProductID)
         {
-            Product product = uow.Product.Get(ProductID);
+            ProductServiceRef.MainContractOf_ProductDataClient client = new ProductServiceRef.MainContractOf_ProductDataClient();
+            ProductData product = client.Get(ProductID);
             if (product != null)
             {
                 try
@@ -39,17 +37,20 @@ namespace Shop.Controllers
                 }
                 
             }
+            client.Close();
             return RedirectToAction("Index");
         }
 
-        public RedirectToRouteResult RemoveFromCart(Product product)
+        public RedirectToRouteResult RemoveFromCart(ProductData product)
         {
-            Product Productincart = uow.Product.Get(product.ProductID);
+            ProductServiceRef.MainContractOf_ProductDataClient client = new ProductServiceRef.MainContractOf_ProductDataClient();
+            ProductData Productincart = client.Get(product.ProductID);
 
             if (Productincart != null)
             {
                 GetCart().Deleting(product);
             }
+            client.Close();
             return RedirectToAction("Index");
         }
 
