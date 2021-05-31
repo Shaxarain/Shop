@@ -27,7 +27,7 @@ namespace WcfService
         }
         public ProductsViewModel GetPage(int page = 1)
         {
-            int PageSize = 8;
+            int PageSize = 10;
             ProductsViewModel model = new ProductsViewModel
             {
                 Products = Translator.ProductsToContracts(uow.Product.GetAll()
