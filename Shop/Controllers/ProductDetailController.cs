@@ -12,11 +12,7 @@ namespace Shop.Controllers
 {
     public class ProductDetailController : Controller
     {
-        UOWCatalog uow;
-        public ProductDetailController()
-        {
-            uow = new UOWCatalog();
-        }
+        public ProductDetailController() { }
         public ActionResult Index(int ProductID)
         {
             ProductServiceRef.MainContractOf_ProductDataClient client = new ProductServiceRef.MainContractOf_ProductDataClient();
