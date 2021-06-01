@@ -41,6 +41,10 @@ namespace Shop
         {
             get { return Carting; }
         }
+        public void Clear()
+        {
+            Carting.Clear();
+        }
     }
     public class CartLine
     {

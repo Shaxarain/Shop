@@ -74,7 +74,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Binders\CartModelBinder.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Repositories\ProductInventoryRepository.cs" />
     <Compile Include="Repositories\ProductPhotoReposictory.cs" />
