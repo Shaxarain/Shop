@@ -20,7 +20,7 @@ namespace Shop.HTMLHelpers
 
                 for (int i = 1; i <= pagingInfo.TotalPages; i++)
                 {
-                    TagBuilder tag = new TagBuilder("a"); // Construct an <a> tag
+                    TagBuilder tag = new TagBuilder("a");
                     tag.MergeAttribute("href", pageUrl(i));
                     tag.InnerHtml = i.ToString();
                     if (i == pagingInfo.CurrentPage)

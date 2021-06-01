@@ -11,10 +11,12 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Class" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LargePhoto" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductID" type="xs:int" />
       <xs:element minOccurs="0" name="ProductSubcategoryID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:short" />
       <xs:element minOccurs="0" name="Size" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StandardCost" type="xs:decimal" />
       <xs:element minOccurs="0" name="Style" nillable="true" type="xs:string" />

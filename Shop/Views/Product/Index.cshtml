@@ -18,6 +18,7 @@
                 <th>Продукт</th>
                 <th>Картинка</th>
                 <th>Цена</th>
+                <th>Оставшееся количество</th>
                 <th>Кнопочка</th>
                 <th>Ещё кнопочка</th>
             </tr>
@@ -32,6 +33,9 @@
                     </td>
                     <td>
                         <p>@p.StandardCost</p>
+                    </td>
+                    <td>
+                        <p>     @p.Quantity</p>
                     </td>
                     <td>
                         @using (Html.BeginForm("AddToCart", "Cart"))

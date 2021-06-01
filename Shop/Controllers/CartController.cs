@@ -41,14 +41,14 @@ namespace Shop.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectToRouteResult RemoveFromCart(ProductData product)
+        public RedirectToRouteResult RemoveFromCart(int ProductID)
         {
             ProductServiceRef.MainContractOf_ProductDataClient client = new ProductServiceRef.MainContractOf_ProductDataClient();
-            ProductData Productincart = client.Get(product.ProductID);
+            ProductData Productincart = client.Get(ProductID);
 
             if (Productincart != null)
             {
-                GetCart().Deleting(product);
+                GetCart().Deleting(Productincart);
             }
             client.Close();
             return RedirectToAction("Index");

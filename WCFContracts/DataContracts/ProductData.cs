@@ -35,6 +35,10 @@ namespace WCFContracts.DataContracts
         public byte[] LargePhoto { get; set; }
         [DataMember]
         public byte[] ThumbNailPhoto { get; set; }
+        [DataMember]
+        public string Description { get; set; }
+        [DataMember]
+        public short Quantity { get; set; }
         public ProductData(Product product)
         {
             this.ProductID = product.ProductID;
@@ -49,6 +53,15 @@ namespace WCFContracts.DataContracts
             this.rowguid = product.rowguid;
             this.LargePhoto = product.ProductProductPhoto.First().ProductPhoto.LargePhoto;
             this.ThumbNailPhoto = product.ProductProductPhoto.First().ProductPhoto.ThumbNailPhoto;
+            if(product.ProductModel == null || product.ProductModel.ProductModelProductDescriptionCulture.Count() < 1)
+            {
+                this.Description = "No description";
+            }
+            else
+            {
+                this.Description = product.ProductModel.ProductModelProductDescriptionCulture.First().ProductDescription.Description;
+            }
+            this.Quantity = product.ProductInventory.First().Quantity;
         }
     }
 }

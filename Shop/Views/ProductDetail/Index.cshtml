@@ -1,10 +1,14 @@
 ﻿@model Shop.Models.ProductDetailViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ProductDetails";
 }
 
-<h2>Index</h2>
+<h2>@Model.Product.Name</h2>
 
-@Model.Product.Name
-
-@Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Product.LargePhoto) + "\" />")
+<p>@Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(Model.Product.LargePhoto) + "\" />")</p>
+<p>Цена: @Model.Product.StandardCost</p>
+<p>Цвет: @Model.Product.Color</p>
+<p>Размер: @Model.Product.Size</p>
+<p>Вес: @Model.Product.Weight</p>
+<p>Стиль: @Model.Product.Style</p>
+<p>Описание: @Model.Product.Description</p>
