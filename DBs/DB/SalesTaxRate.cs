@@ -25,5 +25,7 @@ namespace DBs.DB
         public Guid rowguid { get; set; }
 
         public DateTime ModifiedDate { get; set; }
+
+        public virtual StateProvince StateProvince { get; set; }
     }
 }

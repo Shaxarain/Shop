@@ -12,12 +12,7 @@ namespace Shop.Controllers
 {
     public class CartController : Controller
     {
-        private IOrderProcessor orderProcessor;
-        public CartController(IOrderProcessor proc) 
-        {
-            orderProcessor = proc;
-        }
-        public CartController(){ }
+        public CartController() { }
         public ViewResult Index ()
         {
             return View(new CartIndexViewModel
@@ -69,13 +64,13 @@ namespace Shop.Controllers
         [HttpPost]
         public ViewResult Checkout(Cart cart, PurchasingDetail purchasingDetails)
         {
-            if (cart.Lines.Count() == 0)
+            cart = GetCart();
+            if (cart.Lines.Count == 0)
             {
                 ModelState.AddModelError("", "Sorry, your cart is empty!");
             }
             if (ModelState.IsValid)
             {
-                orderProcessor.ProcessOrder(cart, purchasingDetails);
                 cart.Clear();
                 return View("Completed");
             }

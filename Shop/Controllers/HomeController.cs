@@ -31,6 +31,10 @@ namespace Shop.Controllers
 
             return View();
         }
+        public ActionResult Orders()
+        {
+            return View();
+        }
         public RedirectToRouteResult Cart()
         {
             return RedirectToRoute(new { controller = "Cart", action = "Index" });

@@ -6,23 +6,25 @@ namespace DBs.DB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Sales.PersonCreditCard")]
-    public partial class PersonCreditCard
+    [Table("Person.Password")]
+    public partial class Password
     {
         [Key]
-        [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int BusinessEntityID { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int CreditCardID { get; set; }
+        [Required]
+        [StringLength(128)]
+        public string PasswordHash { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        public string PasswordSalt { get; set; }
+
+        public Guid rowguid { get; set; }
 
         public DateTime ModifiedDate { get; set; }
 
         public virtual Person Person { get; set; }
-
-        public virtual CreditCard CreditCard { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace DBs.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
+            PurchaseOrderHeader = new HashSet<PurchaseOrderHeader>();
             SalesOrderHeader = new HashSet<SalesOrderHeader>();
         }
 
@@ -31,6 +32,11 @@ namespace DBs.DB
         public Guid rowguid { get; set; }
 
         public DateTime ModifiedDate { get; set; }
+
+        public virtual Person Person { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeader { get; set; }
 
         public virtual SalesTerritory SalesTerritory { get; set; }
 

@@ -16,6 +16,9 @@ namespace Funcs
         private ProductPhotoRepository productphotoRepository;
         private ProductInventoryRepository productinventoryRepository;
         private ShoppingCartItemRepository shoppingcartitemRepository;
+        private OrderHeaderRepository orderheaderRepository;
+        private SalesPersonRepository salespersonRepository;
+        private OrderDetailRepository orderdetailRepository;
         public ProductRepository Product
         {
             get
@@ -61,7 +64,33 @@ namespace Funcs
                 return shoppingcartitemRepository;
             }
         }
-
+        public OrderHeaderRepository OrderHeader
+        {
+            get
+            {
+                if (orderheaderRepository == null)
+                    orderheaderRepository = new OrderHeaderRepository(db);
+                return orderheaderRepository;
+            }
+        }
+        public OrderDetailRepository OrderDetail
+        {
+            get
+            {
+                if (orderdetailRepository == null)
+                    orderdetailRepository = new OrderDetailRepository(db);
+                return orderdetailRepository;
+            }
+        }
+        public SalesPersonRepository SalesPerson
+        {
+            get
+            {
+                if (salespersonRepository == null)
+                    salespersonRepository = new SalesPersonRepository(db);
+                return salespersonRepository;
+            }
+        }
         public void Save()
         {
             db.SaveChanges();

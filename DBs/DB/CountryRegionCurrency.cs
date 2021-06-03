@@ -21,6 +21,8 @@ namespace DBs.DB
 
         public DateTime ModifiedDate { get; set; }
 
+        public virtual CountryRegion CountryRegion { get; set; }
+
         public virtual Currency Currency { get; set; }
     }
 }

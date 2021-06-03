@@ -51,7 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DB\Address.cs" />
+    <Compile Include="DB\AddressType.cs" />
     <Compile Include="DB\BillOfMaterials.cs" />
+    <Compile Include="DB\BusinessEntity.cs" />
+    <Compile Include="DB\BusinessEntityAddress.cs" />
+    <Compile Include="DB\BusinessEntityContact.cs" />
+    <Compile Include="DB\ContactType.cs" />
+    <Compile Include="DB\CountryRegion.cs" />
     <Compile Include="DB\CountryRegionCurrency.cs" />
     <Compile Include="DB\CreditCard.cs" />
     <Compile Include="DB\Culture.cs" />
@@ -59,9 +66,14 @@
     <Compile Include="DB\CurrencyRate.cs" />
     <Compile Include="DB\Customer.cs" />
     <Compile Include="DB\DataBase.cs" />
+    <Compile Include="DB\EmailAddress.cs" />
     <Compile Include="DB\Illustration.cs" />
     <Compile Include="DB\Location.cs" />
+    <Compile Include="DB\Password.cs" />
+    <Compile Include="DB\Person.cs" />
     <Compile Include="DB\PersonCreditCard.cs" />
+    <Compile Include="DB\PersonPhone.cs" />
+    <Compile Include="DB\PhoneNumberType.cs" />
     <Compile Include="DB\Product.cs" />
     <Compile Include="DB\ProductCategory.cs" />
     <Compile Include="DB\ProductCostHistory.cs" />
@@ -93,6 +105,7 @@
     <Compile Include="DB\ShoppingCartItem.cs" />
     <Compile Include="DB\SpecialOffer.cs" />
     <Compile Include="DB\SpecialOfferProduct.cs" />
+    <Compile Include="DB\StateProvince.cs" />
     <Compile Include="DB\Store.cs" />
     <Compile Include="DB\TransactionHistory.cs" />
     <Compile Include="DB\TransactionHistoryArchive.cs" />

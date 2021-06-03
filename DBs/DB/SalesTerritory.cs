@@ -12,6 +12,7 @@ namespace DBs.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SalesTerritory()
         {
+            StateProvince = new HashSet<StateProvince>();
             Customer = new HashSet<Customer>();
             SalesOrderHeader = new HashSet<SalesOrderHeader>();
             SalesPerson = new HashSet<SalesPerson>();
@@ -48,6 +49,11 @@ namespace DBs.DB
         public Guid rowguid { get; set; }
 
         public DateTime ModifiedDate { get; set; }
+
+        public virtual CountryRegion CountryRegion { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StateProvince> StateProvince { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customer { get; set; }

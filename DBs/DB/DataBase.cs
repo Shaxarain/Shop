@@ -12,6 +12,19 @@ namespace DBs.DB
         {
         }
 
+        public virtual DbSet<Address> Address { get; set; }
+        public virtual DbSet<AddressType> AddressType { get; set; }
+        public virtual DbSet<BusinessEntity> BusinessEntity { get; set; }
+        public virtual DbSet<BusinessEntityAddress> BusinessEntityAddress { get; set; }
+        public virtual DbSet<BusinessEntityContact> BusinessEntityContact { get; set; }
+        public virtual DbSet<ContactType> ContactType { get; set; }
+        public virtual DbSet<CountryRegion> CountryRegion { get; set; }
+        public virtual DbSet<EmailAddress> EmailAddress { get; set; }
+        public virtual DbSet<Password> Password { get; set; }
+        public virtual DbSet<Person> Person { get; set; }
+        public virtual DbSet<PersonPhone> PersonPhone { get; set; }
+        public virtual DbSet<PhoneNumberType> PhoneNumberType { get; set; }
+        public virtual DbSet<StateProvince> StateProvince { get; set; }
         public virtual DbSet<BillOfMaterials> BillOfMaterials { get; set; }
         public virtual DbSet<Culture> Culture { get; set; }
         public virtual DbSet<Illustration> Illustration { get; set; }
@@ -63,6 +76,131 @@ namespace DBs.DB
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Address>()
+                .HasMany(e => e.BusinessEntityAddress)
+                .WithRequired(e => e.Address)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Address>()
+                .HasMany(e => e.SalesOrderHeader)
+                .WithRequired(e => e.Address)
+                .HasForeignKey(e => e.BillToAddressID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Address>()
+                .HasMany(e => e.SalesOrderHeader1)
+                .WithRequired(e => e.Address1)
+                .HasForeignKey(e => e.ShipToAddressID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AddressType>()
+                .HasMany(e => e.BusinessEntityAddress)
+                .WithRequired(e => e.AddressType)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<BusinessEntity>()
+                .HasMany(e => e.BusinessEntityAddress)
+                .WithRequired(e => e.BusinessEntity)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<BusinessEntity>()
+                .HasMany(e => e.BusinessEntityContact)
+                .WithRequired(e => e.BusinessEntity)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<BusinessEntity>()
+                .HasOptional(e => e.Person)
+                .WithRequired(e => e.BusinessEntity);
+
+            modelBuilder.Entity<BusinessEntity>()
+                .HasOptional(e => e.Store)
+                .WithRequired(e => e.BusinessEntity);
+
+            modelBuilder.Entity<BusinessEntity>()
+                .HasOptional(e => e.Vendor)
+                .WithRequired(e => e.BusinessEntity);
+
+            modelBuilder.Entity<ContactType>()
+                .HasMany(e => e.BusinessEntityContact)
+                .WithRequired(e => e.ContactType)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CountryRegion>()
+                .HasMany(e => e.CountryRegionCurrency)
+                .WithRequired(e => e.CountryRegion)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CountryRegion>()
+                .HasMany(e => e.SalesTerritory)
+                .WithRequired(e => e.CountryRegion)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CountryRegion>()
+                .HasMany(e => e.StateProvince)
+                .WithRequired(e => e.CountryRegion)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Password>()
+                .Property(e => e.PasswordHash)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Password>()
+                .Property(e => e.PasswordSalt)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Person>()
+                .Property(e => e.PersonType)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Person>()
+                .HasMany(e => e.BusinessEntityContact)
+                .WithRequired(e => e.Person)
+                .HasForeignKey(e => e.PersonID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Person>()
+                .HasMany(e => e.EmailAddress)
+                .WithRequired(e => e.Person)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Person>()
+                .HasOptional(e => e.Password)
+                .WithRequired(e => e.Person);
+
+            modelBuilder.Entity<Person>()
+                .HasMany(e => e.Customer)
+                .WithOptional(e => e.Person)
+                .HasForeignKey(e => e.PersonID);
+
+            modelBuilder.Entity<Person>()
+                .HasMany(e => e.PersonCreditCard)
+                .WithRequired(e => e.Person)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Person>()
+                .HasMany(e => e.PersonPhone)
+                .WithRequired(e => e.Person)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PhoneNumberType>()
+                .HasMany(e => e.PersonPhone)
+                .WithRequired(e => e.PhoneNumberType)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<StateProvince>()
+                .Property(e => e.StateProvinceCode)
+                .IsFixedLength();
+
+            modelBuilder.Entity<StateProvince>()
+                .HasMany(e => e.Address)
+                .WithRequired(e => e.StateProvince)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<StateProvince>()
+                .HasMany(e => e.SalesTaxRate)
+                .WithRequired(e => e.StateProvince)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<BillOfMaterials>()
                 .Property(e => e.UnitMeasureCode)
                 .IsFixedLength();
@@ -536,6 +674,11 @@ namespace DBs.DB
             modelBuilder.Entity<SalesTerritory>()
                 .Property(e => e.CostLastYear)
                 .HasPrecision(19, 4);
+
+            modelBuilder.Entity<SalesTerritory>()
+                .HasMany(e => e.StateProvince)
+                .WithRequired(e => e.SalesTerritory)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SalesTerritory>()
                 .HasMany(e => e.SalesTerritoryHistory)

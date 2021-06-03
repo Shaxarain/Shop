@@ -6,8 +6,8 @@ namespace DBs.DB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Sales.PersonCreditCard")]
-    public partial class PersonCreditCard
+    [Table("Person.EmailAddress")]
+    public partial class EmailAddress
     {
         [Key]
         [Column(Order = 0)]
@@ -16,13 +16,16 @@ namespace DBs.DB
 
         [Key]
         [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int CreditCardID { get; set; }
+        public int EmailAddressID { get; set; }
+
+        [Column("EmailAddress")]
+        [StringLength(50)]
+        public string EmailAddress1 { get; set; }
+
+        public Guid rowguid { get; set; }
 
         public DateTime ModifiedDate { get; set; }
 
         public virtual Person Person { get; set; }
-
-        public virtual CreditCard CreditCard { get; set; }
     }
 }

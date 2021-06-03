@@ -39,6 +39,8 @@ namespace DBs.DB
 
         public DateTime ModifiedDate { get; set; }
 
+        public virtual BusinessEntity BusinessEntity { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductVendor> ProductVendor { get; set; }
 

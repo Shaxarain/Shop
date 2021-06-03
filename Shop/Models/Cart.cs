@@ -37,7 +37,7 @@ namespace Shop
         {
             return Carting.Sum(e => e.Product.StandardCost * e.Quantity);
         }
-        public IEnumerable<CartLine> Lines
+        public List<CartLine> Lines
         {
             get { return Carting; }
         }
@@ -45,10 +45,5 @@ namespace Shop
         {
             Carting.Clear();
         }
-    }
-    public class CartLine
-    {
-        public ProductData Product { get; set; }
-        public int Quantity { get; set; }
     }
 }
