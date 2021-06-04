@@ -30,11 +30,13 @@ namespace Funcs.Repositories
         public void Create (PurchaseOrderDetail sod)
         {
             db.PurchaseOrderDetail.Add(sod);
+            db.SaveChanges();
         }
 
         public void Update(PurchaseOrderDetail sod)
         {
             db.Entry(sod).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace Funcs.Repositories
             PurchaseOrderDetail sod = db.PurchaseOrderDetail.Find(id);
             if (sod != null)
                 db.PurchaseOrderDetail.Remove(sod);
+            db.SaveChanges();
         }
     }
 }

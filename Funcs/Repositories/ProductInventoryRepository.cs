@@ -30,11 +30,13 @@ namespace Funcs.Repositories
         public void Create(ProductInventory pi)
         {
             db.ProductInventory.Add(pi);
+            db.SaveChanges();
         }
 
         public void Update(ProductInventory pi)
         {
             db.Entry(pi).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace Funcs.Repositories
             ProductInventory pi = db.ProductInventory.Find(id);
             if (pi != null)
                 db.ProductInventory.Remove(pi);
+            db.SaveChanges();
         }
     }
 }

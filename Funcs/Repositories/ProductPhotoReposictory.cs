@@ -30,11 +30,13 @@ namespace Funcs
         public void Create(ProductPhoto pp)
         {
             db.ProductPhoto.Add(pp);
+            db.SaveChanges();
         }
 
         public void Update(ProductPhoto pp)
         {
             db.Entry(pp).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace Funcs
             ProductPhoto pp = db.ProductPhoto.Find(id);
             if (pp != null)
                 db.ProductPhoto.Remove(pp);
+            db.SaveChanges();
         }
     }
 }

@@ -9,13 +9,8 @@ namespace DBs.DB
     [Table("Purchasing.PurchaseOrderDetail")]
     public partial class PurchaseOrderDetail
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PurchaseOrderID { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
         public int PurchaseOrderDetailID { get; set; }
 
         public DateTime DueDate { get; set; }

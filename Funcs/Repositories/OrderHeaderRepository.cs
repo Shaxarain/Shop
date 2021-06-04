@@ -30,11 +30,13 @@ namespace Funcs.Repositories
         public void Create(PurchaseOrderHeader poh)
         {
             db.PurchaseOrderHeader.Add(poh);
+            db.SaveChanges();
         }
 
         public void Update(PurchaseOrderHeader poh)
         {
             db.Entry(poh).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace Funcs.Repositories
             PurchaseOrderHeader poh = db.PurchaseOrderHeader.Find(id);
             if (poh != null)
                 db.PurchaseOrderHeader.Remove(poh);
+            db.SaveChanges();
         }
     }
 }

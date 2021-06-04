@@ -59,22 +59,25 @@ namespace WCFContracts
             poh.TotalDue = poh.SubTotal + poh.TaxAmt + poh.Freight;
             poh.ModifiedDate = DateTime.Now;
             poh.CustomerID = od.CustomerID;
-            foreach(var pq in od.OrderProducts)
-            {
-                PurchaseOrderDetail pod = new PurchaseOrderDetail();
-                pod.PurchaseOrderID = poh.PurchaseOrderID;
-                pod.DueDate = DateTime.Now;
-                pod.OrderQty = (short)pq.Quantity;
-                pod.ProductID = pq.Product.ProductID;
-                pod.UnitPrice = pq.Product.StandardCost;
-                pod.LineTotal = pq.Quantity * pod.UnitPrice;
-                pod.ReceivedQty = 999;
-                pod.RejectedQty = 0;
-                pod.StockedQty = pod.ReceivedQty - pod.RejectedQty;
-                pod.ModifiedDate = DateTime.Now;
-                uow.OrderDetail.Create(pod);
-            }
             return poh;
+        }
+        public static List<TerritoryData> TerritoriesToContracts(List<SalesTerritory> lst) 
+        {
+            List<TerritoryData> ltd = new List<TerritoryData>();
+            foreach (var i in lst)
+            {
+                ltd.Add(new TerritoryData(i));
+            }
+            return ltd;
+        }
+        public static List<OrderData> HeadersToOrders(IEnumerable<PurchaseOrderHeader> poh)
+        {
+            List<OrderData> od = new List<OrderData>();
+            foreach(var i in poh)
+            {
+                od.Add(new OrderData(i));
+            }
+            return od;
         }
     }
 }

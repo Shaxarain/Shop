@@ -19,6 +19,7 @@ namespace Funcs
         private OrderHeaderRepository orderheaderRepository;
         private SalesPersonRepository salespersonRepository;
         private OrderDetailRepository orderdetailRepository;
+        private TerritoryRepository salesterritoryRepository;
         public ProductRepository Product
         {
             get
@@ -89,6 +90,15 @@ namespace Funcs
                 if (salespersonRepository == null)
                     salespersonRepository = new SalesPersonRepository(db);
                 return salespersonRepository;
+            }
+        }
+        public TerritoryRepository SalesTerritory
+        {
+            get
+            {
+                if (salesterritoryRepository == null)
+                    salesterritoryRepository = new TerritoryRepository(db);
+                return salesterritoryRepository;
             }
         }
         public void Save()

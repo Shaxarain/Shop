@@ -84,6 +84,7 @@
     <Compile Include="Repositories\PrPrPhotoRepository.cs" />
     <Compile Include="Repositories\SalesPersonRepository.cs" />
     <Compile Include="Repositories\ShoppingCartItemRepository.cs" />
+    <Compile Include="Repositories\TerritoryRepository.cs" />
     <Compile Include="UOWCatalog.cs" />
   </ItemGroup>
   <ItemGroup>

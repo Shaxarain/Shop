@@ -1,7 +1,6 @@
-﻿@model Shop.Models.PurchasingDetail
-
+﻿@model WCFContracts.DataContracts.OrderData
 @{
-    Layout = null;
+    ViewBag.Title = "Оформление заказа";
 }
 
 <h2>Пожалуйста, введите информацию</h2>
@@ -9,15 +8,14 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary()
-    <h3>Заказ для:</h3>
-    <div>Имя: @Html.EditorFor(x => x.Name)</div>
-    <h3>Address</h3>
-    <div>Строка 1: @Html.EditorFor(x => x.Line1)</div>
-    <div>Строка 2: @Html.EditorFor(x => x.Line2)</div>
-    <div>Строка 3: @Html.EditorFor(x => x.Line3)</div>
-    <div>Город: @Html.EditorFor(x => x.City)</div>
-    <div>Штат: @Html.EditorFor(x => x.State)</div>
-    <div>Страна: @Html.EditorFor(x => x.Country)</div>
+    <h3>Сумма:</h3>
+    <div>@Html.EditorFor(st => st.SubTotal, new { @Value = ViewBag.value })</div>
+    <h3>Страна:</h3>
+    <div>@Html.DropDownListFor(model => model.TerritoryID, ViewBag.terra as SelectList)</div>
+    <div>@Html.EditorFor(s => s.Status, new { @Value = "3" })</div>
+    <div>@Html.EditorFor(ei => ei.EmployeeID, new { @Value = "265" })</div>
+    <div>@Html.EditorFor(ei => ei.ModifiedDate, new { @Value = DateTime.Now })</div>
+    <div>@Html.EditorFor(ei => ei.OrderProducts, new { @Value = ViewBag.cl })</div>
     <h3>Options</h3>
     <p align="center">
         <input class="actionButtons" type="submit" value="Оформить заказ" />

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/WCFContracts.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFContracts.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:56177/OrderService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfOrderData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderData" nillable="true" type="tns:OrderData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderData" nillable="true" type="tns:ArrayOfOrderData" />
+  <xs:complexType name="OrderData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="EmployeeID" type="xs:int" />
+      <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrderProducts" nillable="true" type="tns:ArrayOfCartLine" />
+      <xs:element minOccurs="0" name="Status" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="SubTotal" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TerritoryID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderData" nillable="true" type="tns:OrderData" />
+  <xs:complexType name="ArrayOfCartLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CartLine" nillable="true" type="tns:CartLine" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCartLine" nillable="true" type="tns:ArrayOfCartLine" />
+  <xs:complexType name="CartLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Product" nillable="true" type="tns:ProductData" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CartLine" nillable="true" type="tns:CartLine" />
+  <xs:complexType name="ProductData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Class" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LargePhoto" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductID" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductSubcategoryID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:short" />
+      <xs:element minOccurs="0" name="Size" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StandardCost" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Style" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ThumbNailPhoto" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Weight" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="rowguid" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductData" nillable="true" type="tns:ProductData" />
+  <xs:complexType name="ProductsViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PageInfo" nillable="true" type="tns:PageInfo" />
+      <xs:element minOccurs="0" name="Products" nillable="true" type="tns:ArrayOfProductData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductsViewModel" nillable="true" type="tns:ProductsViewModel" />
+  <xs:complexType name="PageInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemsPerPage" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalItems" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PageInfo" nillable="true" type="tns:PageInfo" />
+  <xs:complexType name="ArrayOfProductData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductData" nillable="true" type="tns:ProductData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductData" nillable="true" type="tns:ArrayOfProductData" />
+  <xs:complexType name="ArrayOfTerritoryData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TerritoryData" nillable="true" type="tns:TerritoryData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTerritoryData" nillable="true" type="tns:ArrayOfTerritoryData" />
+  <xs:complexType name="TerritoryData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountryRegionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TerritoryID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TerritoryData" nillable="true" type="tns:TerritoryData" />
+</xs:schema>

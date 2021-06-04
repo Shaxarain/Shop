@@ -30,11 +30,13 @@ namespace Funcs
         public void Create(Product product)
         {
             db.Product.Add(product);
+            db.SaveChanges();
         }
 
         public void Update(Product product)
         {
             db.Entry(product).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -42,6 +44,7 @@ namespace Funcs
             Product product = db.Product.Find(id);
             if (product != null)
                 db.Product.Remove(product);
+            db.SaveChanges();
         }
     }
 }

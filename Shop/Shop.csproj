@@ -125,6 +125,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\OrderServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cart.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -148,10 +153,27 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\OrderServiceRef\OrderService.wsdl" />
+    <None Include="Connected Services\OrderServiceRef\OrderService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrderServiceRef\OrderService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OrderServiceRef\OrderService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ProductServiceRef\ProductService.disco" />
     <None Include="Connected Services\ProductServiceRef\configuration91.svcinfo" />
     <None Include="Connected Services\ProductServiceRef\configuration.svcinfo" />
     <None Include="Connected Services\ProductServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\OrderServiceRef\OrderService.disco" />
+    <None Include="Connected Services\OrderServiceRef\configuration91.svcinfo" />
+    <None Include="Connected Services\OrderServiceRef\configuration.svcinfo" />
+    <None Include="Connected Services\OrderServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -177,6 +199,8 @@
     </None>
     <Content Include="Properties\DataSources\WCFContracts.DataContracts.ProductData.datasource" />
     <Content Include="Properties\DataSources\WCFContracts.DataContracts.ProductsViewModel.datasource" />
+    <Content Include="Properties\DataSources\WCFContracts.DataContracts.OrderData.datasource" />
+    <Content Include="Properties\DataSources\WCFContracts.DataContracts.TerritoryData.datasource" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -244,6 +268,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\OrderServiceRef\" />
     <WCFMetadataStorage Include="Connected Services\ProductServiceRef\" />
   </ItemGroup>
   <PropertyGroup>
