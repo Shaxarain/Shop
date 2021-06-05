@@ -1,12 +1,14 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    text-align: center;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 170px;
+    padding-right: 170px;
+    text-align: center;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -22,3 +24,58 @@ select,
 textarea {
     max-width: 280px;
 }
+td {
+    width: 150px;
+    height: 80px;
+    text-align: center;
+}
+th{
+    text-align: center;
+}
+.myButton {
+    background: linear-gradient(to bottom, #363636 5%, #1a1a1a 100%);
+    background-color: #363636;
+    border-radius: 14px;
+    border: 1px solid #000000;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 5px 8px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #000000;
+}
+
+    .myButton:hover {
+        background: linear-gradient(to bottom, #1a1a1a 5%, #363636 100%);
+        background-color: #1a1a1a;
+    }
+
+    .myButton:active {
+        position: relative;
+        top: 1px;
+    }
+.pager {
+    text-align: center;
+    border-top: 2px solid #000000;
+    padding: .1em 0 0 0;
+    margin-top: 1em;
+}
+DIV.pager A {
+    background: linear-gradient(to bottom, #363636 5%, #1a1a1a 100%);
+    font-size: 1.2em;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0 .4em 0 .4em;
+    border-radius: 10px;
+}
+
+    DIV.pager A:hover {
+        background: linear-gradient(to bottom, #1a1a1a 5%, #363636 100%);
+    }
+
+    DIV.pager A.selected {
+        background-color: #353535;
+        color: White;
+    }

@@ -29,7 +29,7 @@
                 @using (Html.BeginForm("RemoveFromCart", "Cart"))
                 {
                     <input id="ProductID" name="ProductID" type="hidden" value=@p.Product.ProductID />
-                    <input type="submit" value="Удалить" />
+                    <input class="myButton" type="submit" value="Удалить" />
                 }
             </td>
         </tr>
@@ -44,5 +44,5 @@
     </tfoot>
 </table>
 <p align="center" class="actionButtons">
-    @Html.ActionLink("Checkout now", "Checkout")
+    @Html.ActionLink("Оформить заказ", "Checkout")
 </p>
