@@ -52,6 +52,12 @@ namespace Shop.Controllers
             client.Close();
             return RedirectToAction("Index");
         }
+        public RedirectToRouteResult RemoveAll()
+        {
+            GetCart().Clear();
+            return RedirectToAction("Index");
+
+        }
         public Cart GetCart()
         {
             Cart cart = (Cart)Session["Cart"];
