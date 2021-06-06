@@ -28,10 +28,8 @@ namespace DBs.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusinessEntityContact> BusinessEntityContact { get; set; }
 
-        public virtual Person Person { get; set; }
 
-        public virtual Store Store { get; set; }
 
-        public virtual Vendor Vendor { get; set; }
+     
     }
 }

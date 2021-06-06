@@ -4,13 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DBs.DB;
+using Funcs.Identity;
+using Funcs.Interfaces;
 using Funcs.Repositories;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Shop.Funcs.EF;
+using Shop.Funcs.Entities;
 
 namespace Funcs
 {
     public class UOWCatalog : IDisposable
     {
         private DataBase db = new DataBase();
+        private ApplicationContext bd = new ApplicationContext("Identity");
+
         private ProductRepository productRepository;
         private PrPrPhotoRepository prprphotoRepository;
         private ProductPhotoRepository productphotoRepository;
@@ -20,6 +27,11 @@ namespace Funcs
         private SalesPersonRepository salespersonRepository;
         private OrderDetailRepository orderdetailRepository;
         private TerritoryRepository salesterritoryRepository;
+
+        private ApplicationUserManager usermanagerRepository;
+        private ApplicationRoleManager rolemanagerRepository;
+        private IClientManager clientmanagerRepository;
+
         public ProductRepository Product
         {
             get
@@ -101,6 +113,35 @@ namespace Funcs
                 return salesterritoryRepository;
             }
         }
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                if (usermanagerRepository == null)
+                    usermanagerRepository = new ApplicationUserManager(new UserStore<ApplicationUser>(bd));
+                return usermanagerRepository;
+            }
+        }
+
+        public IClientManager ClientManager
+        {
+            get
+            {
+                if (clientmanagerRepository == null)
+                    clientmanagerRepository = new ClientManagerRepository();
+                return clientmanagerRepository;
+            }
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                if (rolemanagerRepository == null)
+                    rolemanagerRepository = new ApplicationRoleManager(new RoleStore<ApplicationRole>(bd));
+                return rolemanagerRepository;
+            }
+        }
         public void Save()
         {
             db.SaveChanges();
@@ -112,7 +153,6 @@ namespace Funcs
             {
                 if (disposing)
                 {
-                    db.Dispose();
                 }
                 this.disposed = true;
             }
@@ -121,6 +161,13 @@ namespace Funcs
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+        public async Task SaveAsync()
+        {
+            await db.SaveChangesAsync();
+        }
+        public UOWCatalog()
+        {
         }
     }
 }

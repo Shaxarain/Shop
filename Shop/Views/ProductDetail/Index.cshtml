@@ -12,3 +12,8 @@
 <p>Вес: @Model.Product.Weight</p>
 <p>Стиль: @Model.Product.Style</p>
 <p>Описание: @Model.Product.Description</p>
+@using (Html.BeginForm("AddToCart", "Cart"))
+{
+    <input id="ProductID" name="ProductID" type="hidden" value=@Model.Product.ProductID />
+    <input class="myButton" type="submit" value="Добавить в корзину" />
+}

@@ -21,7 +21,6 @@ namespace DBs.DB
         public virtual DbSet<CountryRegion> CountryRegion { get; set; }
         public virtual DbSet<EmailAddress> EmailAddress { get; set; }
         public virtual DbSet<Password> Password { get; set; }
-        public virtual DbSet<Person> Person { get; set; }
         public virtual DbSet<PersonPhone> PersonPhone { get; set; }
         public virtual DbSet<PhoneNumberType> PhoneNumberType { get; set; }
         public virtual DbSet<StateProvince> StateProvince { get; set; }
@@ -52,7 +51,7 @@ namespace DBs.DB
         public virtual DbSet<PurchaseOrderDetail> PurchaseOrderDetail { get; set; }
         public virtual DbSet<PurchaseOrderHeader> PurchaseOrderHeader { get; set; }
         public virtual DbSet<ShipMethod> ShipMethod { get; set; }
-        public virtual DbSet<Vendor> Vendor { get; set; }
+       
         public virtual DbSet<CountryRegionCurrency> CountryRegionCurrency { get; set; }
         public virtual DbSet<CreditCard> CreditCard { get; set; }
         public virtual DbSet<Currency> Currency { get; set; }
@@ -71,8 +70,6 @@ namespace DBs.DB
         public virtual DbSet<ShoppingCartItem> ShoppingCartItem { get; set; }
         public virtual DbSet<SpecialOffer> SpecialOffer { get; set; }
         public virtual DbSet<SpecialOfferProduct> SpecialOfferProduct { get; set; }
-        public virtual DbSet<Store> Store { get; set; }
-        public virtual DbSet<ProductDocument> ProductDocument { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -108,17 +105,8 @@ namespace DBs.DB
                 .WithRequired(e => e.BusinessEntity)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<BusinessEntity>()
-                .HasOptional(e => e.Person)
-                .WithRequired(e => e.BusinessEntity);
 
-            modelBuilder.Entity<BusinessEntity>()
-                .HasOptional(e => e.Store)
-                .WithRequired(e => e.BusinessEntity);
-
-            modelBuilder.Entity<BusinessEntity>()
-                .HasOptional(e => e.Vendor)
-                .WithRequired(e => e.BusinessEntity);
+            
 
             modelBuilder.Entity<ContactType>()
                 .HasMany(e => e.BusinessEntityContact)
@@ -148,39 +136,6 @@ namespace DBs.DB
                 .Property(e => e.PasswordSalt)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Person>()
-                .Property(e => e.PersonType)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Person>()
-                .HasMany(e => e.BusinessEntityContact)
-                .WithRequired(e => e.Person)
-                .HasForeignKey(e => e.PersonID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Person>()
-                .HasMany(e => e.EmailAddress)
-                .WithRequired(e => e.Person)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Person>()
-                .HasOptional(e => e.Password)
-                .WithRequired(e => e.Person);
-
-            modelBuilder.Entity<Person>()
-                .HasMany(e => e.Customer)
-                .WithOptional(e => e.Person)
-                .HasForeignKey(e => e.PersonID);
-
-            modelBuilder.Entity<Person>()
-                .HasMany(e => e.PersonCreditCard)
-                .WithRequired(e => e.Person)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Person>()
-                .HasMany(e => e.PersonPhone)
-                .WithRequired(e => e.Person)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PhoneNumberType>()
                 .HasMany(e => e.PersonPhone)
@@ -289,9 +244,7 @@ namespace DBs.DB
                 .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Product>()
-                .HasOptional(e => e.ProductDocument)
-                .WithRequired(e => e.Product);
+          
 
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.ProductInventory)
@@ -508,16 +461,7 @@ namespace DBs.DB
                 .WithRequired(e => e.ShipMethod)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Vendor>()
-                .HasMany(e => e.ProductVendor)
-                .WithRequired(e => e.Vendor)
-                .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Vendor>()
-                .HasMany(e => e.PurchaseOrderHeader)
-                .WithRequired(e => e.Vendor)
-                .HasForeignKey(e => e.VendorID)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CountryRegionCurrency>()
                 .Property(e => e.CurrencyCode)
@@ -641,11 +585,7 @@ namespace DBs.DB
                 .WithRequired(e => e.SalesPerson)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<SalesPerson>()
-                .HasMany(e => e.Store)
-                .WithOptional(e => e.SalesPerson)
-                .HasForeignKey(e => e.SalesPersonID);
-
+          
             modelBuilder.Entity<SalesPersonQuotaHistory>()
                 .Property(e => e.SalesQuota)
                 .HasPrecision(19, 4);
@@ -700,10 +640,6 @@ namespace DBs.DB
                 .HasForeignKey(e => new { e.SpecialOfferID, e.ProductID })
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Store>()
-                .HasMany(e => e.Customer)
-                .WithOptional(e => e.Store)
-                .HasForeignKey(e => e.StoreID);
         }
     }
 }

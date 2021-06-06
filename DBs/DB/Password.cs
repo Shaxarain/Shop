@@ -25,6 +25,5 @@ namespace DBs.DB
 
         public DateTime ModifiedDate { get; set; }
 
-        public virtual Person Person { get; set; }
     }
 }

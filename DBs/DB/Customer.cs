@@ -33,14 +33,12 @@ namespace DBs.DB
 
         public DateTime ModifiedDate { get; set; }
 
-        public virtual Person Person { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeader { get; set; }
 
         public virtual SalesTerritory SalesTerritory { get; set; }
 
-        public virtual Store Store { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }

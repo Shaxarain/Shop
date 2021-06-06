@@ -37,6 +37,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -70,7 +76,6 @@
     <Compile Include="DB\Illustration.cs" />
     <Compile Include="DB\Location.cs" />
     <Compile Include="DB\Password.cs" />
-    <Compile Include="DB\Person.cs" />
     <Compile Include="DB\PersonCreditCard.cs" />
     <Compile Include="DB\PersonPhone.cs" />
     <Compile Include="DB\PhoneNumberType.cs" />
@@ -78,7 +83,6 @@
     <Compile Include="DB\ProductCategory.cs" />
     <Compile Include="DB\ProductCostHistory.cs" />
     <Compile Include="DB\ProductDescription.cs" />
-    <Compile Include="DB\ProductDocument.cs" />
     <Compile Include="DB\ProductInventory.cs" />
     <Compile Include="DB\ProductListPriceHistory.cs" />
     <Compile Include="DB\ProductModel.cs" />
@@ -106,13 +110,17 @@
     <Compile Include="DB\SpecialOffer.cs" />
     <Compile Include="DB\SpecialOfferProduct.cs" />
     <Compile Include="DB\StateProvince.cs" />
-    <Compile Include="DB\Store.cs" />
     <Compile Include="DB\TransactionHistory.cs" />
     <Compile Include="DB\TransactionHistoryArchive.cs" />
     <Compile Include="DB\UnitMeasure.cs" />
-    <Compile Include="DB\Vendor.cs" />
     <Compile Include="DB\WorkOrder.cs" />
     <Compile Include="DB\WorkOrderRouting.cs" />
+    <Compile Include="EF\ApplicationContext.cs" />
+    <Compile Include="Entities\ApplicaionRole.cs" />
+    <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Entities\ClientProfile.cs" />
+    <Compile Include="Identity\ApplicationRoleManager.cs" />
+    <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

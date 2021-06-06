@@ -43,6 +43,4 @@
         </tr>
     </tfoot>
 </table>
-<p align="center" class="actionButtons">
-    @Html.ActionLink("Оформить заказ", "Checkout")
-</p>
+<div class="myButton">@Html.ActionLink("Оформить заказ", "Checkout", "Cart", new { @class = "myButton"}, null)</div>

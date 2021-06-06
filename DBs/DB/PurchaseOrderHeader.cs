@@ -56,6 +56,6 @@ namespace DBs.DB
 
         public virtual ShipMethod ShipMethod { get; set; }
 
-        public virtual Vendor Vendor { get; set; }
+     
     }
 }

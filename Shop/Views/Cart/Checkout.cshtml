@@ -8,6 +8,7 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary()
+    <h3></h3>
     <h3>Сумма:</h3>
     <div>@Html.EditorFor(st => st.SubTotal, new { @Value = ViewBag.value })</div>
     <h3>Страна:</h3>

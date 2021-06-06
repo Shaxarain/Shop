@@ -15,7 +15,7 @@ namespace DBs.DB
             SalesOrderHeader = new HashSet<SalesOrderHeader>();
             SalesPersonQuotaHistory = new HashSet<SalesPersonQuotaHistory>();
             SalesTerritoryHistory = new HashSet<SalesTerritoryHistory>();
-            Store = new HashSet<Store>();
+
         }
 
         [Key]
@@ -54,7 +54,6 @@ namespace DBs.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesTerritoryHistory> SalesTerritoryHistory { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Store> Store { get; set; }
+      
     }
 }

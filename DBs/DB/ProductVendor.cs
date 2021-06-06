@@ -45,6 +45,6 @@ namespace DBs.DB
 
         public virtual UnitMeasure UnitMeasure { get; set; }
 
-        public virtual Vendor Vendor { get; set; }
+
     }
 }

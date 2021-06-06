@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContracts\CartLine.cs" />
+    <Compile Include="DataContracts\ClaimsIdentityData.cs" />
+    <Compile Include="DataContracts\UserData.cs" />
     <Compile Include="DataContracts\OrderData.cs" />
     <Compile Include="DataContracts\PageInfo.cs" />
     <Compile Include="DataContracts\ProductData.cs" />
@@ -52,6 +54,8 @@
     <Compile Include="DataContracts\TerritoryData.cs" />
     <Compile Include="IOrderContract.cs" />
     <Compile Include="IMainContract.cs" />
+    <Compile Include="IUserService.cs" />
+    <Compile Include="DataContracts\OperationDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translator.cs" />
   </ItemGroup>

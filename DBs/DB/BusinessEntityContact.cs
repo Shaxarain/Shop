@@ -32,6 +32,5 @@ namespace DBs.DB
 
         public virtual ContactType ContactType { get; set; }
 
-        public virtual Person Person { get; set; }
     }
 }
